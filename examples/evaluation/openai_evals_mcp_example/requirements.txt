@@ -1,0 +1,3 @@
+evals
+openai>=1.0.0
+jinja2

@@ -2182,6 +2182,15 @@
     - evals
     - mcp
 
+- title: MCP Evaluation Harness Example
+  path: examples/evaluation/openai_evals_mcp_example/README.md
+  date: 2025-06-30
+  authors:
+    - codex-user
+  tags:
+    - evals-api
+    - mcp
+
 - title: Evals API Use-case - Structured Outputs Evaluation
   path: examples/evaluation/use-cases/structured-outputs-evaluation.ipynb
   date: 2025-06-09
