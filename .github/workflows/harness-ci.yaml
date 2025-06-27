@@ -1,0 +1,27 @@
+name: Harness CI
+
+on:
+  push:
+    paths:
+      - 'examples/harness/**'
+      - '.github/workflows/harness-ci.yaml'
+  pull_request:
+    paths:
+      - 'examples/harness/**'
+      - '.github/workflows/harness-ci.yaml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          pip install -r examples/harness/requirements.txt
+          pip install pre-commit
+      - name: Run pre-commit
+        run: pre-commit run --all-files
+        working-directory: examples/harness
