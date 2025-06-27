@@ -1,0 +1,6 @@
+openai
+requests
+pytest
+black
+ruff
+pre-commit
