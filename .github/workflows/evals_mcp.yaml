@@ -1,0 +1,29 @@
+name: Evaluate MCP Example
+
+on:
+  pull_request:
+
+jobs:
+  evals:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('examples/evaluation/openai_evals_mcp_example/requirements.txt') }}
+          restore-keys: ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: pip install -r examples/evaluation/openai_evals_mcp_example/requirements.txt
+
+      - name: Run evaluation
+        run: python examples/evaluation/openai_evals_mcp_example/run_ci.py
