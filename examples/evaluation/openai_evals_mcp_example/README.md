@@ -25,3 +25,16 @@ bash scripts/run_local.sh
 - `evals/prompts/answer.jinja` – prompt template.
 - `scripts/run_local.sh` – quick start script.
 - `scripts/run_ci.py` – CI entry point used by the Dockerfile.
+
+## GitHub Actions
+
+A workflow named **MCP Eval** runs automatically on every pull request. You can
+also trigger it manually from GitHub:
+
+1. Push your branch and open the **Actions** tab.
+2. Choose **MCP Eval** from the list of workflows.
+3. Click **Run workflow**, select the branch, and start the job.
+
+The workflow installs the dependencies listed in `requirements.txt`, executes
+`scripts/run_ci.py`, and fails if the evaluation's accuracy or latency thresholds
+are not met.
